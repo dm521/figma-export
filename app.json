@@ -22,6 +22,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#090B0F"
       }
-    }
+    },
+    "entryPoint": "./App.tsx"
   }
 } 

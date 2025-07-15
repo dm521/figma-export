@@ -25,54 +25,52 @@ const HomePage: React.FC<HomePageProps> = ({ navigation }) => {
       
       {/* 背景图片 */}
       <Image
-        source={{ uri: 'https://via.placeholder.com/375x812/1a1a1a/ffffff?text=Background' }}
+        source={{ uri: 'https://picsum.photos/375/812?random=1' }}
         style={styles.backgroundImage}
         resizeMode="cover"
       />
-      
-      {/* 状态栏区域 */}
-      <View style={styles.statusBar}>
-        <Text style={styles.statusBarTime}>9:41</Text>
-        <View style={styles.statusBarIcons}>
-          <View style={styles.signalIcon} />
-          <View style={styles.wifiIcon} />
-          <View style={styles.batteryIcon} />
-        </View>
-      </View>
 
       {/* 主要内容区域 */}
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        {/* 角色信息卡片 */}
-        <View style={styles.characterCard}>
-          <View style={styles.characterInfo}>
-            <Image
-              source={{ uri: 'https://via.placeholder.com/34x34/ff6b6b/ffffff?text=Nina' }}
-              style={styles.avatar}
-            />
-            <View style={styles.characterDetails}>
-              <View style={styles.nameRow}>
-                <Text style={styles.characterName}>Nina</Text>
-                <View style={styles.verifiedIcon}>
-                  <Text style={styles.verifiedText}>✓</Text>
+      <View style={styles.content}>
+        {/* 顶部导航区域 */}
+        <View style={styles.topNavigation}>
+          {/* 角色信息卡片 */}
+          <View style={styles.characterCard}>
+            <View style={styles.characterInfo}>
+              <Image
+                source={{ uri: 'https://picsum.photos/34/34?random=2' }}
+                style={styles.avatar}
+              />
+              <View style={styles.characterDetails}>
+                <View style={styles.nameRow}>
+                  <Text style={styles.characterName}>Nina</Text>
+                  <View style={styles.verifiedIcon}>
+                    <Text style={styles.verifiedText}>▼</Text>
+                  </View>
+                </View>
+                <View style={styles.followersRow}>
+                  <Text style={styles.followersCount}>3.2w关注</Text>
+                  <TouchableOpacity style={styles.followButton}>
+                    <LinearGradient
+                      colors={['#E6BA4A', '#E2E64A', '#81DB62']}
+                      style={styles.followButtonGradient}
+                    >
+                      <View style={styles.plusIcon}>
+                        <View style={styles.plusHorizontal} />
+                        <View style={styles.plusVertical} />
+                      </View>
+                    </LinearGradient>
+                  </TouchableOpacity>
                 </View>
               </View>
-              <Text style={styles.followersCount}>3.2w关注</Text>
             </View>
           </View>
-          <TouchableOpacity style={styles.followButton}>
-            <LinearGradient
-              colors={['#E6BA4A', '#E2E64A', '#81DB62']}
-              style={styles.followButtonGradient}
-            >
-              <Text style={styles.followButtonText}>+</Text>
-            </LinearGradient>
+
+          {/* 菜单按钮 */}
+          <TouchableOpacity style={styles.menuButton}>
+            <Text style={styles.menuIcon}>☰</Text>
           </TouchableOpacity>
         </View>
-
-        {/* 侧边栏菜单按钮 */}
-        <TouchableOpacity style={styles.menuButton}>
-          <Text style={styles.menuIcon}>☰</Text>
-        </TouchableOpacity>
 
         {/* 简介卡片 */}
         <View style={styles.introCard}>
@@ -87,28 +85,37 @@ const HomePage: React.FC<HomePageProps> = ({ navigation }) => {
               colors={['#FD8B6A', '#FAFE66', '#C4DB62']}
               style={styles.decorationGradient}
             />
+            <TouchableOpacity style={styles.expandButton}>
+              <View style={styles.expandDots}>
+                <View style={styles.dot} />
+                <View style={styles.dot} />
+                <View style={styles.dot} />
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
 
         {/* 输入框 */}
         <View style={styles.inputContainer}>
           <View style={styles.inputBox}>
-            <Text style={styles.inputIcon}>💬</Text>
+            <View style={styles.searchIcon}>
+              <Text style={styles.searchIconText}>🔍</Text>
+            </View>
             <Text style={styles.inputPlaceholder}>发送消息给Nina</Text>
           </View>
           <View style={styles.inputActions}>
             <TouchableOpacity style={styles.actionButton}>
-              <Text style={styles.actionIcon}>🎤</Text>
+              <Text style={styles.actionIcon}>⚡</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.actionButton}>
-              <Text style={styles.actionIcon}>⚡</Text>
+              <Text style={styles.actionIcon}>🎁</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.actionButton}>
               <Text style={styles.actionIcon}>⋯</Text>
             </TouchableOpacity>
           </View>
         </View>
-      </ScrollView>
+      </View>
 
       {/* 底部导航栏 */}
       <View style={styles.bottomBar}>
@@ -128,8 +135,13 @@ const HomePage: React.FC<HomePageProps> = ({ navigation }) => {
             <Text style={styles.tabText}>消息</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.tabItem}>
-            <View style={styles.tabIcon}>
-              <Text style={styles.tabIconText}>📝</Text>
+            <View style={styles.centerTabIcon}>
+              <LinearGradient
+                colors={['#E6BA4A', '#E2E64A', '#81DB62']}
+                style={styles.centerTabGradient}
+              >
+                <Text style={styles.centerTabIconText}>+</Text>
+              </LinearGradient>
             </View>
           </TouchableOpacity>
           <TouchableOpacity style={styles.tabItem}>
@@ -161,67 +173,37 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
   },
-  statusBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 10,
-    paddingBottom: 5,
-    zIndex: 10,
-  },
-  statusBarTime: {
-    color: '#E4E4E7',
-    fontSize: 14,
-    fontWeight: '600',
-  },
-  statusBarIcons: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-  },
-  signalIcon: {
-    width: 17,
-    height: 10,
-    backgroundColor: '#E4E4E7',
-    borderRadius: 1,
-  },
-  wifiIcon: {
-    width: 15,
-    height: 11,
-    backgroundColor: '#E4E4E7',
-    borderRadius: 1,
-  },
-  batteryIcon: {
-    width: 24,
-    height: 11,
-    backgroundColor: '#E4E4E7',
-    borderRadius: 2,
-  },
   content: {
     flex: 1,
     paddingHorizontal: 20,
+    paddingTop: 10,
+    justifyContent: 'space-between',
+  },
+  topNavigation: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 60,
   },
   characterCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
     backgroundColor: 'rgba(9, 11, 15, 0.2)',
     borderRadius: 50,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    marginTop: 20,
-    marginBottom: 20,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    minHeight: 38,
+    alignSelf: 'flex-start',
   },
   characterInfo: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    gap: 6,
   },
   avatar: {
-    width: 34,
-    height: 34,
-    borderRadius: 17,
+    width: 30,
+    height: 30,
+    borderRadius: 15,
   },
   characterDetails: {
     gap: 2,
@@ -229,50 +211,67 @@ const styles = StyleSheet.create({
   nameRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
+    gap: 1,
   },
   characterName: {
     color: '#E4E4E7',
-    fontSize: 12,
-    fontWeight: '500',
+    fontSize: 11,
+    fontWeight: '400',
   },
   verifiedIcon: {
     width: 12,
     height: 12,
-    borderRadius: 6,
-    backgroundColor: '#E4E4E7',
     alignItems: 'center',
     justifyContent: 'center',
   },
   verifiedText: {
-    color: '#090B0F',
-    fontSize: 8,
-    fontWeight: 'bold',
+    color: '#E4E4E7',
+    fontSize: 6,
+    transform: [{ rotate: '180deg' }],
   },
   followersCount: {
     color: '#BBBBBB',
-    fontSize: 10,
+    fontSize: 9,
+  },
+  followersRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
   followButton: {
     width: 38,
     height: 28,
     borderRadius: 14,
     overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: 'transparent',
   },
   followButtonGradient: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  followButtonText: {
-    color: '#090B0F',
-    fontSize: 16,
-    fontWeight: 'bold',
+  plusIcon: {
+    width: 14,
+    height: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  plusHorizontal: {
+    position: 'absolute',
+    width: 14,
+    height: 1.5,
+    backgroundColor: '#090B0F',
+    borderRadius: 0.75,
+  },
+  plusVertical: {
+    position: 'absolute',
+    width: 1.5,
+    height: 14,
+    backgroundColor: '#090B0F',
+    borderRadius: 0.75,
   },
   menuButton: {
-    position: 'absolute',
-    right: 20,
-    top: 20,
     width: 42,
     height: 42,
     borderRadius: 21,
@@ -312,13 +311,32 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 0,
     top: 0,
-    width: 100,
-    height: 50,
+    width: 80,
+    height: 40,
     borderRadius: 12,
   },
   decorationGradient: {
     flex: 1,
     borderRadius: 12,
+  },
+  expandButton: {
+    position: 'absolute',
+    right: 8,
+    top: 8,
+    width: 12,
+    height: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  expandDots: {
+    flexDirection: 'row',
+    gap: 1,
+  },
+  dot: {
+    width: 2,
+    height: 2,
+    borderRadius: 1,
+    backgroundColor: '#71717A',
   },
   inputContainer: {
     backgroundColor: 'rgba(212, 212, 216, 0.2)',
@@ -336,8 +354,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 10,
   },
-  inputIcon: {
+  searchIcon: {
+    width: 24,
+    height: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  searchIconText: {
     fontSize: 16,
+    color: '#E4E4E7',
   },
   inputPlaceholder: {
     color: 'rgba(228, 228, 231, 0.3)',
@@ -403,18 +428,25 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '500',
   },
-  tabIcon: {
-    width: 44,
-    height: 36,
-    borderRadius: 15,
-    borderWidth: 2,
-    borderColor: 'rgba(228, 228, 231, 0.5)',
+  centerTabIcon: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: -10,
+  },
+  centerTabGradient: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  tabIconText: {
-    fontSize: 16,
-    color: 'rgba(228, 228, 231, 0.5)',
+  centerTabIconText: {
+    fontSize: 24,
+    color: '#090B0F',
+    fontWeight: 'bold',
   },
   homeIndicator: {
     position: 'absolute',

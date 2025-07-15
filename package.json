@@ -2,7 +2,6 @@
   "name": "figma-native-exporter",
   "version": "1.0.0",
   "description": "Figma 设计转 React Native 页面生成器",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "expo start",
