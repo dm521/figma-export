@@ -7,7 +7,12 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "extract-frame": "ts-node src/extract-frame.ts",
+    "list-frames": "ts-node src/list-frames.ts",
+    "gen-react-native": "ts-node src/gen-react-native.ts",
+    "design-to-code": "node scripts/design-to-code.js",
+    "generate-component": "npm run design-to-code"
   },
   "keywords": [
     "figma",
