@@ -132,7 +132,7 @@ logs
 dist/
 build/
 out/
-output/
+
 
 # Temporary files
 tmp/
